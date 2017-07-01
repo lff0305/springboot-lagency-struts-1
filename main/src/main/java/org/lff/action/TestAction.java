@@ -6,6 +6,8 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 import org.lff.form.TestForm;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -17,17 +19,16 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class TestAction extends DispatchAction {
 
+    private Logger logger = LoggerFactory.getLogger(TestAction.class);
+
     public TestAction() {
-        System.out.println("==================");
+        logger.info("TestAction created.");
     }
     public ActionForward test(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        System.out.println("TEst");
+        logger.info("TestAction.test called");
         TestForm f = (TestForm)form;
         f.setValue("This is from struts");
         return mapping.findForward("hello");
     }
 
-    public ActionForward test1(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        return null;
-    }
 }
