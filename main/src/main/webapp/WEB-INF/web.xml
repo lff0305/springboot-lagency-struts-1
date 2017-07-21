@@ -4,4 +4,10 @@
 
 <web-app>
     <display-name>Example Web Application for Springboot - Struts</display-name>
+    <servlet>
+        <servlet-name/>
+    </servlet>
+    <servlet>
+        <servlet-name/>
+    </servlet>
 </web-app>

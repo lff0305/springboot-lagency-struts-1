@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 1.3//EN"
+        "http://jakarta.apache.org/struts/dtds/tiles-config_1_3.dtd">
+
+<tiles-definitions>
+    <!--classicLayout-->
+    <definition name="testTiles" template="/WEB-INF/jsp/tiles.jsp">
+        <put name="title" value="/WEB-INF/jsp/title.jsp" />
+        <put name="body" value="/WEB-INF/jsp/body.jsp" />
+    </definition>
+
+</tiles-definitions>
