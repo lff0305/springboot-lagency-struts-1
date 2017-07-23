@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,11 +25,24 @@ public class TestAction extends DispatchAction {
     public TestAction() {
         logger.info("TestAction created.");
     }
+
     public ActionForward test(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         logger.info("TestAction.test called");
-        TestForm f = (TestForm)form;
+        logger.info("SessionId = {} {}", request.getSession().getId(), request.getSession().isNew());
+        request.getSession().invalidate();
+        logger.info("SessionId = {} {}", request.getSession().getId(), request.getSession().isNew());
+        TestForm f = (TestForm) form;
         f.setValue("This is from struts");
+
+        Cookie[] cookies = request.getCookies() == null ? new Cookie[0] : request.getCookies();
+        for (Cookie c : cookies) {
+            logger.info(c.getName() + " " + c.getPath() + " " + c.getSecure());
+        }
+
         return mapping.findForward("hello");
     }
 
+    public ActionForward test1(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        return mapping.findForward("tiles");
+    }
 }
