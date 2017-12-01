@@ -14,7 +14,7 @@ import java.io.IOException;
  * @author Feifei Liu
  * @datetime Jul 12 2017 15:28
  */
-@WebFilter(filterName="cookieFilter",urlPatterns="/*")
+@WebFilter(filterName="cookieFilter",urlPatterns="/*", asyncSupported = true)
 public class CookieFilter implements Filter{
 
     private Logger logger = LoggerFactory.getLogger(CookieFilter.class);
